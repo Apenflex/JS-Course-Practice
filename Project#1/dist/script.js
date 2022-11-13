@@ -17872,7 +17872,7 @@ __webpack_require__.r(__webpack_exports__);
 var changeModalState = function changeModalState(state) {
   var windowForm = document.querySelectorAll(".balcon_icons_img"),
       windowWidth = document.querySelectorAll("#width"),
-      windowHeight = document.querySelectorAll("#heigth"),
+      windowHeight = document.querySelectorAll("#height"),
       windowType = document.querySelectorAll("#view_type"),
       windowProfile = document.querySelectorAll(".checkbox");
   Object(_checkNumInputs__WEBPACK_IMPORTED_MODULE_1__["default"])('#width');
@@ -17880,15 +17880,7 @@ var changeModalState = function changeModalState(state) {
 
   function bindActionToElems(event, elem, prop) {
     elem.forEach(function (item, i) {
-      item.addEventListener(event, function () {
-        if (elem.length > 1) {
-          state[prop] = i;
-        } else {
-          state[prop] = item.value;
-        }
-
-        console.log(state);
-      });
+      item.addEventListener(event, function () {});
     });
   }
 
