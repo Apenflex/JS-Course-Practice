@@ -17887,7 +17887,35 @@ var changeModalState = function changeModalState(state) {
 
   function bindActionToElems(event, elem, prop) {
     elem.forEach(function (item, i) {
-      item.addEventListener(event, function () {});
+      item.addEventListener(event, function () {
+        switch (item.nodeName) {
+          case "SPAN":
+            state[prop] = i;
+            break;
+
+          case "INPUT":
+            if (item.getAttribute("type") === "checkbox") {
+              i === 0 ? state[prop] = "Холодное" : state[prop] = "Теплое";
+              elem.forEach(function (box, j) {
+                box.checked = false;
+
+                if (i == j) {
+                  box.checked = true;
+                }
+              });
+            } else {
+              state[prop] = item.value;
+            }
+
+            break;
+
+          case "SELECT":
+            state[prop] = item.value;
+            break;
+        }
+
+        console.log(state);
+      });
     });
   }
 
@@ -18085,7 +18113,8 @@ var modals = function modals() {
     var trigger = document.querySelectorAll(triggerSelector),
         modal = document.querySelector(modalSelector),
         close = document.querySelector(closeSelector),
-        windows = document.querySelectorAll('[data-modal]');
+        windows = document.querySelectorAll('[data-modal]'),
+        scroll = scrollCalc();
     trigger.forEach(function (item) {
       item.addEventListener('click', function (e) {
         if (e.target) {
@@ -18097,6 +18126,7 @@ var modals = function modals() {
         });
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
+        document.body.style.marginRight = "".concat(scroll, "px");
       });
     });
     close.addEventListener("click", function () {
@@ -18104,7 +18134,8 @@ var modals = function modals() {
         item.style.display = 'none';
       });
       modal.style.display = "none";
-      document.body.style.overflow = ""; // document.body.classList.remove('modal-open');
+      document.body.style.overflow = "";
+      document.body.style.marginRight = "0px"; // document.body.classList.remove('modal-open');
     });
     modal.addEventListener("click", function (e) {
       if (e.target === modal && closeClickOverlay) {
@@ -18112,7 +18143,8 @@ var modals = function modals() {
           item.style.display = "none";
         });
         modal.style.display = "none";
-        document.body.style.overflow = ""; // document.body.classList.remove("modal-open");
+        document.body.style.overflow = "";
+        document.body.style.marginRight = "0px"; // document.body.classList.remove("modal-open");
       }
     });
   }
@@ -18122,6 +18154,18 @@ var modals = function modals() {
       document.querySelector(selector).style.display = "block";
       document.body.style.overflow = "hidden";
     }, time);
+  }
+
+  function scrollCalc() {
+    var div = document.createElement('div');
+    div.style.width = '50px';
+    div.style.height = '50px';
+    div.style.overflowY = 'scroll';
+    div.style.visibility = 'hidden';
+    document.body.appendChild(div);
+    var scrollWidth = div.offsetWidth - div.clientWidth;
+    div.remove();
+    return scrollWidth;
   }
 
   bindModal(".popup_engineer_btn", ".popup_engineer", ".popup_engineer .popup_close");
