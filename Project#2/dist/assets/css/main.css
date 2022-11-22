@@ -332,6 +332,9 @@ h4 {
   margin: 3rem 0 7rem 0;
   text-align: center;
 }
+.main-slide-block-overflow {
+  overflow: hidden;
+}
 .main-features {
   margin-left: 3rem;
   position: relative;
@@ -902,10 +905,30 @@ h4 {
 .often-questions .accordion-heading span {
   border-bottom: 2px dotted #333;
 }
+.often-questions .accordion-heading.active+.accordion-block {
+  display: block;
+}
+.often-questions p.active-style span {
+  color: #e950d7;
+  font-weight: 900;
+  text-decoration: none;
+  border: 0;
+}
 .often-questions .accordion-block {
-  margin-top: 1rem;
   background-color: #f7e7e6;
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.3s ease-out;
+  overflow: hidden;
+  /* display: none; */
+  /* margin-top: 1rem; */
+  /* padding: 3rem 4rem; */
+}
+.often-questions .accordion-block.active-content {
+  overflow: visible;
+  opacity: 1;
   padding: 3rem 4rem;
+  margin-top: 1rem;
 }
 .often-questions .accordion-block:before {
   content: '';
