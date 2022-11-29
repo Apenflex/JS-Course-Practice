@@ -52,20 +52,21 @@ export default class MainSlider extends Slider {
                 }
             );
         });
+    }
 
-        document.querySelectorAll(".prevmodule").forEach((item) => {
+    bindTriggersModule(btn) {
+        btn.forEach((item) => {
             item.addEventListener("click", (e) => {
-                e.stopPropagation();
-                e.preventDefault();
-                this.plusSlides(-1);
-            });
-        });
-
-        document.querySelectorAll(".nextmodule").forEach((item) => {
-            item.addEventListener("click", (e) => {
-                e.stopPropagation();
-                e.preventDefault();
-                this.plusSlides(1);
+                console.log(item);
+                if (item.classList.contains("prevmodule")) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    this.plusSlides(-1);
+                } else if (item.classList.contains("nextmodule")) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    this.plusSlides(1);
+                }
             });
         });
     }
@@ -78,6 +79,8 @@ export default class MainSlider extends Slider {
 
             this.showSlides(this.slideIndex);
             this.bindTriggers();
+            this.bindTriggersModule(this.prevModule);
+            this.bindTriggersModule(this.nextmodule);
         }
     }
 }
