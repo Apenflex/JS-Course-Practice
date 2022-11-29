@@ -45,19 +45,18 @@ export default class MainSlider extends Slider {
                 this.plusSlides(1);
             });
 
-            item.parentNode.previousElementSibling.addEventListener("click",(e) => {
-                    e.preventDefault();
-                    this.slideIndex = 1;
-                    this.showSlides(this.slideIndex);
-                }
-            );
+            item.parentNode.previousElementSibling.addEventListener("click", (e) => {
+                console.log(e.target);
+                e.preventDefault();
+                this.slideIndex = 1;
+                this.showSlides(this.slideIndex);
+            });
         });
     }
 
     bindTriggersModule(btn) {
         btn.forEach((item) => {
             item.addEventListener("click", (e) => {
-                console.log(item);
                 if (item.classList.contains("prevmodule")) {
                     e.stopPropagation();
                     e.preventDefault();
