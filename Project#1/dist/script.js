@@ -17887,35 +17887,7 @@ var changeModalState = function changeModalState(state) {
 
   function bindActionToElems(event, elem, prop) {
     elem.forEach(function (item, i) {
-      item.addEventListener(event, function () {
-        switch (item.nodeName) {
-          case "SPAN":
-            state[prop] = i;
-            break;
-
-          case "INPUT":
-            if (item.getAttribute("type") === "checkbox") {
-              i === 0 ? state[prop] = "Холодное" : state[prop] = "Теплое";
-              elem.forEach(function (box, j) {
-                box.checked = false;
-
-                if (i == j) {
-                  box.checked = true;
-                }
-              });
-            } else {
-              state[prop] = item.value;
-            }
-
-            break;
-
-          case "SELECT":
-            state[prop] = item.value;
-            break;
-        }
-
-        console.log(state);
-      });
+      item.addEventListener(event, function () {});
     });
   }
 
@@ -17989,9 +17961,9 @@ var forms = function forms() {
       inputs = document.querySelectorAll('input');
   Object(_checkNumInputs__WEBPACK_IMPORTED_MODULE_5__["default"])('input[name="user_phone"]');
   var message = {
-    loading: 'Загрузка...',
-    success: 'Спасибо! Скоро мы с вами свяжемся',
-    failure: 'Что-то пошло не так...'
+    loading: 'Завантаження...',
+    success: 'Дякую! Скоро ми з вами зв\'яжемося',
+    failure: 'Щось пішло не так...'
   };
 
   var postData = function postData(url, data) {
