@@ -11,7 +11,7 @@ const calc = (size, material, options, promocode, result) => {
         sum = Math.round((+sizeBlock.value) * (+materialBlock.value) + (+optionsBlock.value));
 
         if (sizeBlock.value == '' || materialBlock.value == '') {
-            resultBlock.textContent = 'Пожалуйста, выберите размер и материал картины';
+            resultBlock.textContent = 'Будь ласка, виберіть розмір та матеріал картини';
             resultBlock.style.fontSize = "2rem";
         } else if(promocodeBlock.value === 'IWANTPOPART') {
             resultBlock.textContent = `Your price ${Math.round(sum * 0.7)}`;

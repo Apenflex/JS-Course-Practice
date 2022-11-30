@@ -4548,7 +4548,7 @@ var calc = function calc(size, material, options, promocode, result) {
     sum = Math.round(+sizeBlock.value * +materialBlock.value + +optionsBlock.value);
 
     if (sizeBlock.value == '' || materialBlock.value == '') {
-      resultBlock.textContent = 'Пожалуйста, выберите размер и материал картины';
+      resultBlock.textContent = 'Будь ласка, виберіть розмір та матеріал картини';
       resultBlock.style.fontSize = "2rem";
     } else if (promocodeBlock.value === 'IWANTPOPART') {
       resultBlock.textContent = "Your price ".concat(Math.round(sum * 0.7));
@@ -4815,9 +4815,9 @@ var forms = function forms() {
       inputs = document.querySelectorAll("input"),
       upload = document.querySelectorAll("[name=upload]");
   var message = {
-    loading: "Загрузка...",
-    success: "Спасибо! Скоро мы с вами свяжемся",
-    failure: "Что-то пошло не так...",
+    loading: "Завантаження...",
+    success: "Дякую! Скоро ми з вами зв'яжемося",
+    failure: "Щось пішло не так...",
     spinner: "assets/img/spinner.gif",
     ok: "assets/img/ok.png",
     fail: "assets/img/fail.png"
@@ -4832,7 +4832,7 @@ var forms = function forms() {
       item.value = "";
     });
     upload.forEach(function (item) {
-      item.previousElementSibling.textContent = "Файл не выбран";
+      item.previousElementSibling.textContent = "Файл не обрано";
     });
   };
 
@@ -4923,7 +4923,7 @@ var mask = function mask(selector) {
   };
 
   function createMask(event) {
-    var matrix = '+7 (___) ___-__-__',
+    var matrix = '+38 (___) ___-__-__',
         i = 0,
         def = matrix.replace(/\D/g, ''),
         val = this.value.replace(/\D/g, '');
